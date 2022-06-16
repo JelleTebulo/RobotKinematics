@@ -9,7 +9,7 @@
 # Reference: Sodemann, Dr. Angela 2020, RoboGrok, accessed 14 October 2020, <http://robogrok.com/>
 #######################################################################################
 
-import numpy as np  # Scientific computing library
+from MyLibraries import *
 
 # Define the desired position of the end effector
 # This is the target (goal) location.

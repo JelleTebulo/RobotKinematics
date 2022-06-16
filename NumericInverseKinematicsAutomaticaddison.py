@@ -7,7 +7,7 @@
 # Date: October 15, 2020
 #######################################################################################
 
-import numpy as np  # Scientific computing library
+from MyLibraries import *
 
 
 def axis_angle_rot_matrix(k, q):
@@ -174,18 +174,15 @@ class RoboticArm:
         v_step_size = 0.05
         theta_max_step = 0.2
         Q_j = theta_start  # Array containing the starting joint angles
-        p_end = np.array([goal_position[0], goal_position[1],
-                          goal_position[2]])  # desired x, y, z coordinate of the end effector in the base frame
-        p_j = self.position(Q_j,
-                            p_i=p_eff_N)  # x, y, z coordinate of the position of the end effector in the global reference frame
+        p_end = np.array([goal_position[0], goal_position[1], goal_position[2]])  # desired x, y, z coordinate of the end effector in the base frame
+        p_j = self.position(Q_j, p_i=p_eff_N)  # x, y, z coordinate of the position of the end effector in the global reference frame
         delta_p = p_end - p_j  # delta_x, delta_y, delta_z between start position and desired final position of end effector
         j = 0  # Initialize the counter variable
 
         # While the magnitude of the delta_p vector is greater than 0.01
         # and we are less than the max number of steps
         while np.linalg.norm(delta_p) > 0.01 and j < max_steps:
-            print(
-                f'j{j}: Q[{Q_j}] , P[{p_j}]')  # Print the current joint angles and position of the end effector in the global frame
+            print(f'j{j}: Q[{Q_j}] , P[{p_j}]')  # Print the current joint angles and position of the end effector in the global frame
 
             # Reduce the delta_p 3-element delta_p vector by some scaling factor
             # delta_p represents the distance between where the end effector is now and our goal position.
